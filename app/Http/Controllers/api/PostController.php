@@ -60,8 +60,9 @@ class PostController extends Controller
         //         ];
         //Post::where('id',$id)->get();
 
-        $post=Post::find($id);
+        // $post=Post::find($id);
         // return $post;
+        $posts=Post::with('user')->findOrfail($id);
         return new PostResource($post);
     }
 
